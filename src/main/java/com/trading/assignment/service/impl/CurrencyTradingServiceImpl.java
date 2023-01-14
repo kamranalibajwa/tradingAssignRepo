@@ -71,12 +71,12 @@ public class CurrencyTradingServiceImpl implements CurrencyTradingService {
             }
         }
         else if(dateUtils.isValidTime(time1) || dateUtils.isValidTime(time2)) {
-            if((!dateUtils.isValidTime(time1) && time1.toUpperCase().contains("NEVER"))
-                    || (!dateUtils.isValidTime(time2) && time2.toUpperCase().contains("NEVER"))){
+            if((!dateUtils.isValidTime(time1) && time1.equalsIgnoreCase(CUTOFF_TIME_NEVER))
+                    || (!dateUtils.isValidTime(time2) && time2.equalsIgnoreCase(CUTOFF_TIME_NEVER))){
                 cutoff = CUTOFF_TIME_NEVER;
             }
-            else if((!dateUtils.isValidTime(time1) && time1.toUpperCase().contains("ALWAYS"))
-                    || (!dateUtils.isValidTime(time2) && time2.toUpperCase().contains("ALWAYS"))){
+            else if((!dateUtils.isValidTime(time1) && time1.equalsIgnoreCase(CUTOFF_TIME_ALWAYS))
+                    || (!dateUtils.isValidTime(time2) && time2.equalsIgnoreCase(CUTOFF_TIME_ALWAYS))){
                 if(dateUtils.isValidTime(time1)){
                     cutoff = time1;
                 }else {
@@ -85,7 +85,7 @@ public class CurrencyTradingServiceImpl implements CurrencyTradingService {
             }
         }
         else {
-            if(time1.toUpperCase().contains("NEVER") || time2.toUpperCase().contains("NEVER")){
+            if(time1.equalsIgnoreCase(CUTOFF_TIME_NEVER) || time2.equalsIgnoreCase(CUTOFF_TIME_NEVER)){
                 cutoff = CUTOFF_TIME_NEVER;
             }else {
                 cutoff = CUTOFF_TIME_ALWAYS;

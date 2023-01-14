@@ -26,7 +26,7 @@ values
     ('SAR','Saudi Arabia','Never possible','14.00','Always possible'),
     ('SEK','Sweden','15.30','Always possible ','Always possible'),
     ('SGD','Singapore','Never possible','14.00','Always possible'),
-    ('THB','Thailand','Never possible','9.00','Always possible'),
+    ('THB','Thailand','Never possible','09.00','Always possible'),
     ('TRY','Turkey','Never possible','14.00','Always possible'),
     ('USD','United States ','16.00','Always possible ','Always possible'),
     ('ZAR','South Africa ','Never possible','14.00','Always possible');
