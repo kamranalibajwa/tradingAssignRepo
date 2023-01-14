@@ -1,6 +1,7 @@
 package com.trading.assignment.service.impl;
 
 import com.trading.assignment.dao.CurrencyTradingRepository;
+import com.trading.assignment.dto.CutoffTime;
 import com.trading.assignment.exception.IsoNotFoundException;
 import com.trading.assignment.model.PropertiesCountryCutoffTimes;
 import com.trading.assignment.service.CurrencyTradingService;
@@ -22,7 +23,7 @@ public class CurrencyTradingServiceImpl implements CurrencyTradingService {
     @Autowired
     DateUtils dateUtils;
 
-    public String getCutoffTime(String currency1, String currency2, String tradeDate) {
+    public CutoffTime getCutoffTime(String currency1, String currency2, String tradeDate) {
         String resultCutoffTime = "";
         PropertiesCountryCutoffTimes properties1 = null;
         PropertiesCountryCutoffTimes properties2 = null;
@@ -53,8 +54,11 @@ public class CurrencyTradingServiceImpl implements CurrencyTradingService {
                 resultCutoffTime = getFinalCutoffTime(properties1.getCutoffTimeAfterTomorrow(), properties2.getCutoffTimeAfterTomorrow());
                 break;
         }
-
-        return resultCutoffTime;
+        CutoffTime cutoffTime = new CutoffTime();
+        cutoffTime.setCurrency1(currency1);
+        cutoffTime.setCurrency2(currency2);
+        cutoffTime.setCutoffTime(resultCutoffTime);
+        return cutoffTime;
     }
 
     private String getFinalCutoffTime(String time1, String time2) {

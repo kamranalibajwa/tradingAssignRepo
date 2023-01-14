@@ -1,5 +1,6 @@
 package com.trading.assignment.controller;
 
+import com.trading.assignment.dto.CutoffTime;
 import com.trading.assignment.exception.IsoNotFoundException;
 import com.trading.assignment.service.impl.CurrencyTradingServiceImpl;
 import org.slf4j.Logger;
@@ -17,17 +18,15 @@ public class CurrencyTradingController {
     CurrencyTradingServiceImpl tradingService;
 
     @GetMapping("/get-cutoff-time")
-    public String retrieveCutoffTime(@RequestParam("currency1") String currency1,
-                                     @RequestParam("currency2") String currency2,
-                                     @RequestParam("tradeDate") String tradeDate){
+    public CutoffTime retrieveCutoffTime(@RequestParam("currency1") String currency1,
+                                         @RequestParam("currency2") String currency2,
+                                         @RequestParam("tradeDate") String tradeDate){
         logger.info("retrieveCutoffTime is called with currencies {} , {} for date: {}", currency1, currency2, tradeDate);
 
-        String cutoffTime = tradingService.getCutoffTime(currency1, currency2, tradeDate);
-
-        if(cutoffTime == null) {
+        if("cutoffTime" == null) {
             throw new IsoNotFoundException("Unable to find data for xxx");
         }
 
-        return cutoffTime;
+        return tradingService.getCutoffTime(currency1, currency2, tradeDate);
     }
 }
