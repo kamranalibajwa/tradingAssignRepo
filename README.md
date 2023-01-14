@@ -16,7 +16,6 @@ schema.sql
 # Running Instance (url docker container):
 
 Swagger documentation:
-https://tradeimageserv-prod-trading-bbgu00.mo4.mogenius.io/swagger-ui/index.html
-
+https://trade2image-prod-trading-bbgu00.mo4.mogenius.io/swagger-ui/index.html
 Test Case:
-https://tradeimageserv-prod-trading-bbgu00.mo4.mogenius.io/get-cutoff-time?currency1=AED&currency2=AUD&tradeDate=14-01-2023
+https://trade2image-prod-trading-bbgu00.mo4.mogenius.io/get-cutoff-time?currency1=AED&currency2=AUD&tradeDate=14-01-2023
