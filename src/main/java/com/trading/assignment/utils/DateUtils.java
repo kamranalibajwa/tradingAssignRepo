@@ -18,6 +18,11 @@ public class DateUtils {
     public static final String DATE_TOMORROW = "tomorrow";
     public static final String DATE_AFTER_TOMORROW = "after tomorrow";
 
+    /**
+     * Get the trade date window
+     * @param date given date/trade date
+     * @return Today, Tomorrow, after_tommorrow based on the given date
+     */
     public String getTradeDateWindow(String date) {
         String dateWindow = "";
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
@@ -42,11 +47,21 @@ public class DateUtils {
         return dateWindow;
     }
 
+    /**
+     * Get local time based on the time string
+     * @param time e.g., 09.00
+     * @return LocalTime
+     */
     public LocalTime getFormattedTime (String time) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH.mm");
         return LocalTime.parse(time, formatter);
     }
 
+    /**
+     * Check if given time string is valid or not
+     * @param time
+     * @return true if time is valid string or false
+     */
     public boolean isValidTime(String time) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH.mm");
         boolean isValidTime = false;

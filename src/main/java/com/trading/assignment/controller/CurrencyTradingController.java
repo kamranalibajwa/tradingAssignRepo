@@ -31,8 +31,8 @@ public class CurrencyTradingController {
 
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "Retrieved cutoff time successfully"),
+            @ApiResponse(responseCode = "400", description = "Parameters are not correct"),
             @ApiResponse(responseCode = "404", description = "Currencies are not found")
-
     })
     @GetMapping("/get-cutoff-time")
     public CutoffTime retrieveCutoffTime(@Parameter(required = true, description = "Currency code for country1, e.g., USD")

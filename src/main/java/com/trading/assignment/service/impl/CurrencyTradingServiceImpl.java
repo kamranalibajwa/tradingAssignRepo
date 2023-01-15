@@ -24,6 +24,7 @@ public class CurrencyTradingServiceImpl implements CurrencyTradingService {
     @Autowired
     DateUtils dateUtils;
 
+    @Override
     public CutoffTime getCutoffTime(String currency1, String currency2, String tradeDate) {
         String resultCutoffTime = "";
         PropertiesCountryCutoffTimes properties1 = null;
@@ -43,10 +44,6 @@ public class CurrencyTradingServiceImpl implements CurrencyTradingService {
         }
 
         String dateWindow = dateUtils.getTradeDateWindow(tradeDate);
-
-        /*if(dateWindow == null || dateWindow.equals("")){
-            throw new NotFoundException("Cannot exchange based on the provided parameters");
-        }*/
 
         switch (dateWindow) {
             case DateUtils.DATE_TODAY:
