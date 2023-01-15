@@ -16,7 +16,7 @@ schema.sql
 # Live Demo (based on docker image):
 
 Swagger documentation:
-https://trade2image-prod-trading-bbgu00.mo4.mogenius.io/swagger-ui/index.html
+https://tradeimage3ser-prod-trading-bbgu00.mo4.mogenius.io/swagger-ui/index.html
 
 Test Case:
-https://trade2image-prod-trading-bbgu00.mo4.mogenius.io/get-cutoff-time?currency1=AED&currency2=AUD&tradeDate=14-01-2023
+https://tradeimage3ser-prod-trading-bbgu00.mo4.mogenius.io/get-cutoff-time?currency1=USD&currency2=DKK&tradeDate=16-01-2023
