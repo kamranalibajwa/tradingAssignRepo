@@ -3,6 +3,7 @@ package com.trading.assignment.service.impl;
 import com.trading.assignment.dao.CurrencyTradingRepository;
 import com.trading.assignment.dto.CutoffTime;
 import com.trading.assignment.exception.IsoNotFoundException;
+import com.trading.assignment.exception.NotFoundException;
 import com.trading.assignment.model.PropertiesCountryCutoffTimes;
 import com.trading.assignment.service.CurrencyTradingService;
 import com.trading.assignment.utils.DateUtils;
@@ -42,6 +43,10 @@ public class CurrencyTradingServiceImpl implements CurrencyTradingService {
         }
 
         String dateWindow = dateUtils.getTradeDateWindow(tradeDate);
+
+        if(dateWindow == null || dateWindow.equals("")){
+            throw new NotFoundException("Cannot exchange based on the provided parameters");
+        }
 
         switch (dateWindow) {
             case DateUtils.DATE_TODAY:
