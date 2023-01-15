@@ -43,10 +43,6 @@ public class CurrencyTradingController {
                                          @RequestParam("tradeDate") String tradeDate){
         logger.info("retrieveCutoffTime is called with currencies {} , {} for date: {}", currency1, currency2, tradeDate);
 
-        if("cutoffTime" == null) {
-            throw new IsoNotFoundException("Unable to find data for xxx");
-        }
-
         return tradingService.getCutoffTime(currency1, currency2, tradeDate);
     }
 }
