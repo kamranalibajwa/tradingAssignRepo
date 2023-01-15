@@ -44,9 +44,9 @@ public class CurrencyTradingServiceImpl implements CurrencyTradingService {
 
         String dateWindow = dateUtils.getTradeDateWindow(tradeDate);
 
-        if(dateWindow == null || dateWindow.equals("")){
+        /*if(dateWindow == null || dateWindow.equals("")){
             throw new NotFoundException("Cannot exchange based on the provided parameters");
-        }
+        }*/
 
         switch (dateWindow) {
             case DateUtils.DATE_TODAY:

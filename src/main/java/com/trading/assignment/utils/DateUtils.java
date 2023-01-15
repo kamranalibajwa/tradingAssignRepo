@@ -1,6 +1,8 @@
 package com.trading.assignment.utils;
 
 import com.trading.assignment.controller.CurrencyTradingController;
+import com.trading.assignment.exception.InvalidParamException;
+import com.trading.assignment.exception.NotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -19,18 +21,23 @@ public class DateUtils {
     public String getTradeDateWindow(String date) {
         String dateWindow = "";
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-        LocalDate givenDate = LocalDate.parse(date,formatter);
-        LocalDate today = LocalDate.now();
-        LocalDate tomorrow = today.plusDays(1);
+        try {
+            LocalDate givenDate = LocalDate.parse(date,formatter);
+            LocalDate today = LocalDate.now();
+            LocalDate tomorrow = today.plusDays(1);
 
-        if(givenDate.equals(today)){
-            dateWindow = DATE_TODAY;
-        }
-        else if(givenDate.equals(tomorrow) ) {
-            dateWindow = DATE_TOMORROW;
-        }
-        else if(givenDate.isAfter(tomorrow)) {
-            dateWindow = DATE_AFTER_TOMORROW;
+            if(givenDate.equals(today)){
+                dateWindow = DATE_TODAY;
+            }
+            else if(givenDate.equals(tomorrow) ) {
+                dateWindow = DATE_TOMORROW;
+            }
+            else if(givenDate.isAfter(tomorrow)) {
+                dateWindow = DATE_AFTER_TOMORROW;
+            }
+        }catch (Exception e) {
+            logger.debug("Not a valid date: " + date);
+            throw new InvalidParamException("Cannot exchange based on the provided parameters or date format is not correct");
         }
         return dateWindow;
     }

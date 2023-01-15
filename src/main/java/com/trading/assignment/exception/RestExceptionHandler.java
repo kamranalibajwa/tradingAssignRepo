@@ -9,6 +9,16 @@ import javax.servlet.http.HttpServletRequest;
 @RestController
 public class RestExceptionHandler {
 
+
+    @ExceptionHandler(InvalidParamException.class)
+    @ResponseStatus(value = HttpStatus.NOT_FOUND)
+    @ResponseBody
+    public ExResponse invalidParams(HttpServletRequest req, InvalidParamException ex) {
+        String errorURL = req.getRequestURL().toString();
+
+        return new ExResponse(errorURL, ex.getErrorMessage(), HttpStatus.BAD_REQUEST.toString());
+    }
+
     @ExceptionHandler(NotFoundException.class)
     @ResponseStatus(value = HttpStatus.NOT_FOUND)
     @ResponseBody

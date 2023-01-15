@@ -4,6 +4,7 @@ import com.trading.assignment.dto.CutoffTime;
 import com.trading.assignment.exception.IsoNotFoundException;
 import com.trading.assignment.service.impl.CurrencyTradingServiceImpl;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
+import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.info.Info;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -34,8 +35,11 @@ public class CurrencyTradingController {
 
     })
     @GetMapping("/get-cutoff-time")
-    public CutoffTime retrieveCutoffTime(@RequestParam("currency1") String currency1,
+    public CutoffTime retrieveCutoffTime(@Parameter(required = true, description = "Currency code for country1, e.g., USD")
+                                         @RequestParam("currency1") String currency1,
+                                         @Parameter(required = true, description = "Currency code for country2, e.g., DKK")
                                          @RequestParam("currency2") String currency2,
+                                         @Parameter(required = true, description = "Given date for the trade, e.g., dd-MM-yyyy, 16-01-2023")
                                          @RequestParam("tradeDate") String tradeDate){
         logger.info("retrieveCutoffTime is called with currencies {} , {} for date: {}", currency1, currency2, tradeDate);
 
